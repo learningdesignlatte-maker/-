@@ -1,3 +1,5 @@
+import { teacherAvatar, studentAvatar } from '../assets';
+
 export interface DialogueMessage {
   speaker: 'teacher' | 'student';
   speakerName: string;
@@ -23,7 +25,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: '先生、この前、市役所の電子申請と資格試験の申し込みをネットでしたんですけど…何回「次へ」を押しても赤文字でエラーが出て、結局最後まで申し込めなかったんです…！',
         emphasis: '何回「次へ」を押しても赤文字でエラー',
         tag: 'あるある！',
@@ -31,7 +33,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: 'あるあるですね！実は教室でも、一番多く寄せられるご相談なんです。「ちゃんと正確に入れたはずなのに、どうして！？」って本当に焦ってしまいますよね。',
         emphasis: '教室でも一番多いご相談',
         tag: '共感',
@@ -39,7 +41,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: 'そうなんです！何回見直しても間違いが分からなくて、疲れ果てて画面を閉じちゃいました…。',
       },
     ],
@@ -52,7 +54,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: '一番多い原因は「住所の番地」です。よく注意書きに『※住所の数字・番地は大文字（全角）で入力してください』と書いてあるのに、キーボードの普段の打ち方で「1-1」と小文字（半角）で打ってしまうケースです。',
         emphasis: '※住所の数字・番地は大文字（全角）で入力してください',
         tag: '最大の落とし穴',
@@ -60,13 +62,13 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: 'えっ！「1-1」と「１－１」って、目で見るとほとんど同じなのに、ダメなんですか！？',
       },
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: 'そうなんです！人間には同じに見えても、行政や試験の古いコンピューターにとっては「全く別の文字」と判定されてしまうんです。全角は正方形（マス目いっぱい）、半角はその半分の幅の文字ですね。',
         emphasis: '「全く別の文字」と判定されてしまう',
         tag: '仕組み',
@@ -74,7 +76,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: 'なるほど！文字の幅が違ったんですね。カタカナの「フリガナ」を平仮名で打ってしまったり、電話番号にハイフンを入れて弾かれることもありそうです。',
       },
     ],
@@ -87,7 +89,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: 'ウェブサイトの仕組みによって、注意してくれるタイミングが主に3種類あります。今回はごちゃ混ぜにせず、1つずつ体験できるようにしました！',
         emphasis: 'サイトによって違う3つのパターン',
         tag: 'ここを練習！',
@@ -95,7 +97,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: '【パターン①：一括警告型】行政や試験に一番多い！入力中は何も言われないのに、下の「次へ」を押した瞬間に、画面の上にドカンと赤い文字で「※住所は大文字で入力してください」と警告が出るタイプです。',
         emphasis: '【パターン①】「次へ」を押した瞬間に画面上に赤い警告文',
         tag: 'パターン①',
@@ -103,13 +105,13 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: '私が引っかかったのはまさにそれです！上の方に赤い文字が出て、入力欄がピンクや赤枠になるやつですね。',
       },
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: '【パターン②：うっすら入力例型】入力欄の中に最初から薄いグレーで「例：千代田１－１」と入っているタイプです。「もう入っているから飛ばしていいの？」と勘違いしたり、例と違う形式で打つミスが起きやすいです。',
         emphasis: '【パターン②】最初から薄いグレーの例（プレースホルダー）がある',
         tag: 'パターン②',
@@ -117,7 +119,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: '【パターン③：即時判定・ピンク背景型】入力欄から次のマスに移動した瞬間に、背景がピンク色になって「※全角で入力してください」と即座に教えてくれる親切なタイプです。',
         emphasis: '【パターン③】マスを移動した瞬間にピンク色に変化',
         tag: 'パターン③',
@@ -132,7 +134,7 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: '練習の大事なお約束です！セキュリティのため、生徒さんご自身の本当の名前や住所は絶対に入力しないでください。画面の上に「見本カード（運転免許証風）」を常時表示しておきます！',
         emphasis: 'ご自身の本名は絶対に入力しない！画面の「見本カード」を使用',
         tag: '安心・安全',
@@ -140,20 +142,20 @@ export const DIALOGUE_TOPICS: DialogueTopic[] = [
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: '免許証カードが画面の上についてきてくれるなら、架空の住所でも忘れる心配がなくて安心ですね！男性の山田さんと、女性の佐藤さんを選べるんですね。',
       },
       {
         speaker: 'teacher',
         speakerName: '先生',
-        avatarUrl: '/assets/aistudio/teacher_c479ee1c.png',
+        avatarUrl: teacherAvatar,
         text: 'パソコンのキーボードでも、スマホのタップでもどちらでも練習できますよ。わざと間違えてみて、どんな警告文が出るかを確かめるのも大歓迎です！',
         tag: '準備完了',
       },
       {
         speaker: 'student',
         speakerName: '生徒さん',
-        avatarUrl: '/assets/aistudio/student_1e6c2f74.png',
+        avatarUrl: studentAvatar,
         text: 'よし、仕組みがよくわかりました！それでは早速やってみましょう！',
         emphasis: 'それではやってみましょう！',
       },

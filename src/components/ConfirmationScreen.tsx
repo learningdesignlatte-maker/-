@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Check
 } from 'lucide-react';
+import { teacherAvatar, studentAvatar } from '../assets';
 
 interface ConfirmationScreenProps {
   formValues: FormValues;
@@ -77,7 +78,7 @@ export const ConfirmationScreen: React.FC<ConfirmationScreenProps> = ({
           {/* Teacher */}
           <div className="p-3.5 rounded-2xl bg-blue-50/70 border-2 border-[#76A1ED] flex items-start gap-3">
             <img
-              src="/assets/aistudio/teacher_c479ee1c.png"
+              src={teacherAvatar}
               alt="先生"
               className="w-12 h-12 rounded-full border-2 border-[#76A1ED] object-cover shrink-0"
             />
@@ -92,7 +93,7 @@ export const ConfirmationScreen: React.FC<ConfirmationScreenProps> = ({
           {/* Student */}
           <div className="p-3.5 rounded-2xl bg-purple-50/70 border-2 border-[#9D4895] flex items-start gap-3">
             <img
-              src="/assets/aistudio/student_1e6c2f74.png"
+              src={studentAvatar}
               alt="生徒さん"
               className="w-12 h-12 rounded-full border-2 border-[#9D4895] object-cover shrink-0"
             />

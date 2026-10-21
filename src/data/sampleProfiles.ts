@@ -1,4 +1,5 @@
 import { PersonaProfile } from '../types';
+import { teacherAvatar, studentAvatar } from '../assets';
 
 export const SAMPLE_PROFILES: Record<'male' | 'female', PersonaProfile> = {
   male: {
@@ -25,7 +26,7 @@ export const SAMPLE_PROFILES: Record<'male' | 'female', PersonaProfile> = {
     phoneNumberZen: '０９０－１２３４－５６７８',
     email: 'yamada.kenichi@example.com',
     emailZen: 'ｙａｍａｄａ．ｋｅｎｉｃｈｉ＠ｅｘａｍｐｌｅ．ｃｏｍ',
-    photoUrl: '/assets/aistudio/teacher_c479ee1c.png',
+    photoUrl: teacherAvatar,
     licenseNumber: '第301234567890号',
     occupation: '会社員（情報処理）',
   },
@@ -53,7 +54,7 @@ export const SAMPLE_PROFILES: Record<'male' | 'female', PersonaProfile> = {
     phoneNumberZen: '０８０－９８７６－５４３２',
     email: 'sato.misaki@example.com',
     emailZen: 'ｓａｔｏ．ｍｉｓａｋｉ＠ｅｘａｍｐｌｅ．ｃｏｍ',
-    photoUrl: '/assets/aistudio/student_1e6c2f74.png',
+    photoUrl: studentAvatar,
     licenseNumber: '第409876543210号',
     occupation: '自営業（デザイン・事務）',
   },

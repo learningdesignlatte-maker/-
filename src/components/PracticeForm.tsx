@@ -27,6 +27,7 @@ import {
   Lightbulb,
   FileText
 } from 'lucide-react';
+import { teacherAvatar } from '../assets';
 
 interface PracticeFormProps {
   patternId: PracticePatternId;
@@ -375,7 +376,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
                 <div className="mt-3 p-3 rounded-xl bg-[#FFBE34]/20 border-2 border-[#FFBE34] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                   <div className="flex items-start gap-2">
                     <img
-                      src="/assets/aistudio/teacher_c479ee1c.png"
+                      src={teacherAvatar}
                       alt="先生"
                       className="w-10 h-10 rounded-full border border-[#352C21] shrink-0 object-cover"
                     />
