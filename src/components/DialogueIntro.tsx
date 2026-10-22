@@ -137,14 +137,6 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
                 <p className="leading-relaxed whitespace-pre-line font-medium text-[#352C21]">
                   {msg.text}
                 </p>
-
-                {/* Highlight callout if emphasis */}
-                {msg.emphasis && (
-                  <div className="mt-2 pt-2 border-t border-[#352C21]/15 text-xs font-bold text-[#352C21] flex items-center gap-1 bg-white/70 p-2 rounded-lg">
-                    <Sparkles className="w-4 h-4 text-[#FFBE34] shrink-0" />
-                    <span>ここがポイント：{msg.emphasis}</span>
-                  </div>
-                )}
               </div>
             </div>
           );
