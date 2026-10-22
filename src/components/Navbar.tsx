@@ -68,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="px-2.5 py-1 rounded-lg font-bold bg-[#FFBE34] text-[#352C21] border border-[#352C21] hover:bg-[#FFBE34]/80 shadow-2xs text-xs whitespace-nowrap"
             title="全角と半角の違い早見表"
           >
-            早見表
+            全角/半角 早見表
           </button>
         </div>
       </div>
