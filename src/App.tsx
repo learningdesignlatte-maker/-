@@ -179,8 +179,8 @@ export default function App() {
         onOpenGuideModal={() => setIsGuideModalOpen(true)}
       />
 
-      {/* Sticky Driver's License Card (Sticky at top during challenge/forms as requested) */}
-      {(currentView === 'form' || currentView === 'select') && (
+      {/* Sticky Driver's License Card (Displayed after selecting an input pattern) */}
+      {currentView === 'form' && (
         <StickyLicenseCard
           currentProfile={currentProfile}
           onSwitchGender={handleSwitchGender}

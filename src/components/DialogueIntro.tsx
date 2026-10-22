@@ -224,9 +224,6 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
             onClick={() => onSelectPatternDirectly('pattern1')}
             className="p-3 text-left rounded-xl border-2 border-[#352C21] bg-white hover:bg-[#FFB5B8]/20 transition-all shadow-xs group"
           >
-            <div className="text-[11px] font-bold text-[#FFB5B8] bg-[#352C21] px-1.5 py-0.5 rounded w-fit mb-1">
-              一番多い！
-            </div>
             <div className="font-black text-sm text-[#352C21] group-hover:text-red-700">
               パターン①に挑戦
             </div>
@@ -239,9 +236,6 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
             onClick={() => onSelectPatternDirectly('pattern2')}
             className="p-3 text-left rounded-xl border-2 border-[#352C21] bg-white hover:bg-[#FFBE34]/20 transition-all shadow-xs group"
           >
-            <div className="text-[11px] font-bold text-[#FFBE34] bg-[#352C21] px-1.5 py-0.5 rounded w-fit mb-1">
-              勘違いしやすい！
-            </div>
             <div className="font-black text-sm text-[#352C21] group-hover:text-amber-700">
               パターン②に挑戦
             </div>
@@ -254,9 +248,6 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
             onClick={() => onSelectPatternDirectly('pattern3')}
             className="p-3 text-left rounded-xl border-2 border-[#352C21] bg-white hover:bg-[#91DF42]/20 transition-all shadow-xs group"
           >
-            <div className="text-[11px] font-bold text-[#91DF42] bg-[#352C21] px-1.5 py-0.5 rounded w-fit mb-1">
-              親切・モダン
-            </div>
             <div className="font-black text-sm text-[#352C21] group-hover:text-green-700">
               パターン③に挑戦
             </div>

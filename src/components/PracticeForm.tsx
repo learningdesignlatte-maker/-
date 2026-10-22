@@ -24,8 +24,7 @@ import {
   ArrowLeft, 
   ArrowRight,
   RotateCcw,
-  Lightbulb,
-  FileText
+  Lightbulb
 } from 'lucide-react';
 import { teacherAvatar } from '../assets';
 
@@ -64,19 +63,6 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
   const isPattern3 = patternId === 'pattern3'; // real-time pink highlight
   const isExam = patternId === 'patternExam';
 
-  // Pattern descriptions
-  const getPatternTitle = () => {
-    switch (patternId) {
-      case 'pattern1':
-        return '【パターン①：一括警告型】行政・資格試験で最も多いタイプ';
-      case 'pattern2':
-        return '【パターン②：うっすら入力例型】プレースホルダーに惑わされない練習';
-      case 'pattern3':
-        return '【パターン③：即時ピンク変化型】枠を離れた瞬間にリアルタイム指摘';
-      case 'patternExam':
-        return '【本番シミュレーション】全国技能検定 受験申込受付フォーム';
-    }
-  };
 
   const getPatternBadge = () => {
     switch (patternId) {
@@ -132,34 +118,6 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
     }
   };
 
-  // Helper: inject the typical mistake (half-width 1-1 in address)
-  const handleInjectMistake = () => {
-    setFormValues({
-      kanjiName: currentProfile.name,
-      kanaName: currentProfile.nameKana,
-      birthYear: currentProfile.birthYear,
-      birthMonth: currentProfile.birthMonth,
-      birthDay: currentProfile.birthDay,
-      postalCode: currentProfile.postalCodeRaw,
-      prefecture: currentProfile.prefecture,
-      city: currentProfile.city,
-      addressBanchi: currentProfile.addressBanchiHan, // "千代田1-1" (MISTAKE!)
-      building: currentProfile.buildingHan, // "パソコンハイツ201号室" (MISTAKE!)
-      phone: currentProfile.phoneNumberHanNoHyphen,
-      email: currentProfile.email,
-    });
-    setHasSubmitted(true);
-    const errs = validateForm({
-      ...formValues,
-      addressBanchi: currentProfile.addressBanchiHan,
-      building: currentProfile.buildingHan,
-    });
-    setErrors(errs);
-    setShowTeacherAdvice(true);
-    setTimeout(() => {
-      warningBannerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 50);
-  };
 
   // Helper: auto-fix address banchi to full-width
   const handleAutoFixAddress = () => {
@@ -227,32 +185,12 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
           </span>
         </div>
 
-        {/* Experiment buttons */}
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <button
-            type="button"
-            onClick={handleInjectMistake}
-            className="px-3 py-1.5 rounded-lg font-bold bg-[#FFB5B8] text-[#352C21] border border-[#352C21] hover:bg-[#FFB5B8]/80 transition-colors shadow-2xs"
-            title="わざと半角（1-1）を入力して、指定の警告文を体験します"
-          >
-            ⚠ わざと半角で試す（警告体験）
-          </button>
-          <button
-            type="button"
-            onClick={onOpenGuideModal}
-            className="px-3 py-1.5 rounded-lg font-bold bg-[#FFBE34] text-[#352C21] border border-[#352C21] hover:bg-[#FFBE34]/80 transition-colors shadow-2xs"
-          >
-            全角/半角早見表
-          </button>
-        </div>
+
       </div>
 
-      {/* Form Title & Scenario Description */}
+      {/* Form Scenario Description */}
       <div className="bg-white rounded-xl border-2 border-[#352C21] p-4 sm:p-5 mb-6 shadow-xs">
-        <h1 className="text-xl sm:text-2xl font-black text-[#352C21]">
-          {getPatternTitle()}
-        </h1>
-        <p className="text-xs sm:text-sm text-[#352C21]/80 mt-1 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#352C21]/80 leading-relaxed">
           {isPattern1 && '【注意】このタイプは途中で教えてくれません。入力が終わったら一番下の「次へ（確認画面へ）」を押してください。もし誤りがあると画面上部に赤文字の警告が出現します。'}
           {isPattern2 && '【注意】入力欄の中に薄い文字（プレースホルダー）が表示されています。「もう入っている」と勘違いして飛ばさず、見本カードの情報をしっかり入力してください。'}
           {isPattern3 && '【注意】入力欄を離れた瞬間、もし半角などの誤りがあると、マスが薄いピンク色に変わってその場で教えてくれます。'}
@@ -409,13 +347,9 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
         {/* Form Section Header */}
         <div className="border-b-2 border-[#352C21]/15 pb-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg sm:text-xl font-black text-[#352C21] flex items-center gap-2">
-              <FileText className="w-5 h-5 text-[#76A1ED]" />
-              <span>申請者 基本情報入力</span>
+            <h2 className="text-lg sm:text-xl font-black text-[#352C21]">
+              申請者 基本情報入力
             </h2>
-            <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded border border-red-200">
-              ※すべて必須項目です
-            </span>
           </div>
           <p className="text-xs text-[#352C21]/70 mt-1">
             上部の「見本カード（{currentProfile.name}さん）」の通りに入力してください。
