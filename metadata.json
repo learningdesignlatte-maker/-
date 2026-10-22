@@ -1,6 +1,6 @@
 {
   "name": "行政・資格試験フォーム入力トレーニング",
-  "description": "教室向け、大文字・小文字警告や入力パターンの落とし穴を学ぶ入力練習アプリ",
+  "description": "教室向け、全角・半角警告や入力パターンの落とし穴を学ぶ入力練習アプリ",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

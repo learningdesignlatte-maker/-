@@ -70,7 +70,7 @@ export const ConfirmationScreen: React.FC<ConfirmationScreenProps> = ({
           入力完了！完璧に合格できました！
         </h1>
         <p className="text-sm sm:text-base text-[#352C21]/80 max-w-xl mx-auto mt-2 leading-relaxed">
-          行政や資格試験で最もつまずきやすい「住所の大文字（全角）」ルールや各種フォーマットを正確に入力できました。
+          行政や資格試験で最もつまずきやすい「住所の全角」ルールや各種フォーマットを正確に入力できました。
         </p>
 
         {/* Teacher & Student celebration speech */}
@@ -161,7 +161,7 @@ export const ConfirmationScreen: React.FC<ConfirmationScreenProps> = ({
               </div>
               <div className="text-[11px] text-[#5cb312] font-bold mt-1 flex items-center gap-1">
                 <Check className="w-3.5 h-3.5" />
-                <span>大文字（全角）ルール完全準拠</span>
+                <span>全角ルール完全準拠</span>
               </div>
             </dd>
           </div>

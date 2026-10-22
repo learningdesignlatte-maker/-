@@ -4,10 +4,7 @@ import {
   ArrowRight, 
   ChevronLeft, 
   ChevronRight, 
-  Volume2, 
-  VolumeX, 
   Sparkles,
-  BookOpen,
   CheckCircle2
 } from 'lucide-react';
 
@@ -21,37 +18,11 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
   onSelectPatternDirectly,
 }) => {
   const [currentTopicIdx, setCurrentTopicIdx] = useState(0);
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
   const topic = DIALOGUE_TOPICS[currentTopicIdx];
   const isLastTopic = currentTopicIdx === DIALOGUE_TOPICS.length - 1;
 
-  // Optional text-to-speech for elderly / computer school students
-  const speakCurrentMessages = () => {
-    if (!('speechSynthesis' in window)) return;
-    if (isPlayingAudio) {
-      window.speechSynthesis.cancel();
-      setIsPlayingAudio(false);
-      return;
-    }
-
-    const allText = topic.messages
-      .map((m) => `${m.speakerName}。「${m.text}」`)
-      .join(' ');
-    const utterance = new SpeechSynthesisUtterance(allText);
-    utterance.lang = 'ja-JP';
-    utterance.rate = 1.0;
-    utterance.onend = () => setIsPlayingAudio(false);
-    utterance.onerror = () => setIsPlayingAudio(false);
-    setIsPlayingAudio(true);
-    window.speechSynthesis.speak(utterance);
-  };
-
   const handleNext = () => {
-    if (isPlayingAudio) {
-      window.speechSynthesis.cancel();
-      setIsPlayingAudio(false);
-    }
     if (currentTopicIdx < DIALOGUE_TOPICS.length - 1) {
       setCurrentTopicIdx((prev) => prev + 1);
     } else {
@@ -60,10 +31,6 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
   };
 
   const handlePrev = () => {
-    if (isPlayingAudio) {
-      window.speechSynthesis.cancel();
-      setIsPlayingAudio(false);
-    }
     if (currentTopicIdx > 0) {
       setCurrentTopicIdx((prev) => prev - 1);
     }
@@ -73,15 +40,11 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
     <div className="max-w-3xl mx-auto py-6 px-4">
       {/* Intro Header */}
       <div className="text-center mb-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#76A1ED]/20 text-[#352C21] font-bold text-sm mb-2 border border-[#76A1ED]">
-          <BookOpen className="w-4 h-4 text-[#76A1ED]" />
-          <span>教室 入門レッスン</span>
-        </div>
         <h1 className="text-2xl sm:text-3xl font-black text-[#352C21] tracking-tight">
-          行政・試験のフォーム入力で困らないために
+          PC・スマホの入力フォームで困らないために
         </h1>
         <p className="text-sm sm:text-base text-[#352C21]/80 mt-1">
-          先生と生徒さんの会話で、よくある失敗の原因と対処法をわかりやすく解説します。
+          よくある失敗の原因と対処法を会話形式で解説！
         </p>
       </div>
 
@@ -93,11 +56,7 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
           return (
             <button
               key={t.id}
-              onClick={() => {
-                if (isPlayingAudio) window.speechSynthesis.cancel();
-                setIsPlayingAudio(false);
-                setCurrentTopicIdx(idx);
-              }}
+              onClick={() => setCurrentTopicIdx(idx)}
               className={`flex-1 min-w-[70px] py-2 px-2 text-center rounded-lg border-2 transition-all text-xs font-bold ${
                 isActive
                   ? 'border-[#352C21] bg-[#FFBE34] text-[#352C21] shadow-sm scale-102'
@@ -122,39 +81,13 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
       {/* Topic Title Card */}
       <div className="flex items-center justify-between bg-white border-2 border-[#352C21] rounded-t-xl p-3 sm:p-4 border-b-0">
         <div>
-          <span className="text-xs font-bold px-2 py-0.5 rounded bg-[#9D4895] text-white mr-2">
-            STEP {currentTopicIdx + 1} / {DIALOGUE_TOPICS.length}
-          </span>
-          <h2 className="text-lg sm:text-xl font-black text-[#352C21] inline align-middle">
-            {topic.title}
+          <h2 className="text-lg sm:text-xl font-black text-[#352C21]">
+            第{currentTopicIdx + 1}話 {topic.title}
           </h2>
           <p className="text-xs sm:text-sm text-[#352C21]/70 mt-0.5">
             {topic.shortDesc}
           </p>
         </div>
-
-        {/* Speech Audio Toggle */}
-        <button
-          onClick={speakCurrentMessages}
-          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[#352C21] text-xs font-bold transition-colors ${
-            isPlayingAudio 
-              ? 'bg-[#FFB5B8] text-[#352C21] animate-pulse' 
-              : 'bg-white hover:bg-gray-100 text-[#352C21]'
-          }`}
-          title="音声を再生します"
-        >
-          {isPlayingAudio ? (
-            <>
-              <VolumeX className="w-4 h-4 text-red-600" />
-              <span>停止</span>
-            </>
-          ) : (
-            <>
-              <Volume2 className="w-4 h-4 text-[#76A1ED]" />
-              <span className="hidden sm:inline">音声で聴く</span>
-            </>
-          )}
-        </button>
       </div>
 
       {/* Conversation Chat Bubbles Area */}
@@ -201,19 +134,6 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
                     : 'bg-purple-50/40 border-[#9D4895] rounded-tr-none text-[#352C21]'
                 }`}
               >
-                {/* Tag if available */}
-                {msg.tag && (
-                  <span
-                    className={`inline-block text-[11px] font-black px-2 py-0.5 rounded-full mb-1.5 ${
-                      isTeacher
-                        ? 'bg-[#FFBE34] text-[#352C21]'
-                        : 'bg-[#FFB5B8] text-[#352C21]'
-                    }`}
-                  >
-                    {msg.tag}
-                  </span>
-                )}
-
                 <p className="leading-relaxed whitespace-pre-line font-medium text-[#352C21]">
                   {msg.text}
                 </p>
@@ -240,20 +160,20 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
               <div className="bg-red-50 p-2.5 rounded-lg border-2 border-[#FFB5B8]">
                 <div className="font-bold text-red-600 flex items-center gap-1">
-                  <span>❌ 小文字（半角）入力</span>
+                  <span>❌ 半角入力</span>
                   <span className="text-[10px] bg-[#FFB5B8] text-[#352C21] px-1 rounded">エラー原因</span>
                 </div>
                 <div className="text-xl font-mono font-black text-red-700 my-1 bg-white p-1 rounded border border-red-200 text-center">
                   1-1
                 </div>
                 <p className="text-[11px] text-[#352C21]/80">
-                  半角は文字幅が半分。コンピューターは「英数字」と見なすため、「住所は大文字で」と指定されていると弾かれます。
+                  半角は文字幅が半分。コンピューターは「英数字」と見なすため、「住所は全角で」と指定されていると弾かれます。
                 </p>
               </div>
 
               <div className="bg-green-50 p-2.5 rounded-lg border-2 border-[#91DF42]">
                 <div className="font-bold text-[#5cb312] flex items-center gap-1">
-                  <span>⭕ 大文字（全角）入力</span>
+                  <span>⭕ 全角入力</span>
                   <span className="text-[10px] bg-[#91DF42] text-[#352C21] px-1 rounded">正解</span>
                 </div>
                 <div className="text-xl font-mono font-black text-[#352C21] my-1 bg-white p-1 rounded border border-green-200 text-center">
@@ -279,7 +199,7 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
             }`}
           >
             <ChevronLeft className="w-4 h-4" />
-            <span>前の解説に戻る</span>
+            <span>{currentTopicIdx > 0 ? `第${currentTopicIdx}話へ戻る` : '前へ戻る'}</span>
           </button>
 
           <button
@@ -294,7 +214,7 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
               </>
             ) : (
               <>
-                <span>次のポイントを見る</span>
+                <span>第{currentTopicIdx + 2}話へ</span>
                 <ChevronRight className="w-4 h-4" />
               </>
             )}

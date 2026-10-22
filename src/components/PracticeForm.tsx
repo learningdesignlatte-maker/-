@@ -233,9 +233,9 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
             type="button"
             onClick={handleInjectMistake}
             className="px-3 py-1.5 rounded-lg font-bold bg-[#FFB5B8] text-[#352C21] border border-[#352C21] hover:bg-[#FFB5B8]/80 transition-colors shadow-2xs"
-            title="わざと小文字（半角 1-1）を入力して、指定の警告文を体験します"
+            title="わざと半角（1-1）を入力して、指定の警告文を体験します"
           >
-            ⚠ わざと小文字で試す（警告体験）
+            ⚠ わざと半角で試す（警告体験）
           </button>
           <button
             type="button"
@@ -255,7 +255,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
         <p className="text-xs sm:text-sm text-[#352C21]/80 mt-1 leading-relaxed">
           {isPattern1 && '【注意】このタイプは途中で教えてくれません。入力が終わったら一番下の「次へ（確認画面へ）」を押してください。もし誤りがあると画面上部に赤文字の警告が出現します。'}
           {isPattern2 && '【注意】入力欄の中に薄い文字（プレースホルダー）が表示されています。「もう入っている」と勘違いして飛ばさず、見本カードの情報をしっかり入力してください。'}
-          {isPattern3 && '【注意】入力欄を離れた瞬間、もし小文字（半角）などの誤りがあると、マスが薄いピンク色に変わってその場で教えてくれます。'}
+          {isPattern3 && '【注意】入力欄を離れた瞬間、もし半角などの誤りがあると、マスが薄いピンク色に変わってその場で教えてくれます。'}
           {isExam && '【模擬本番】行政ポータル・公的資格試験の公式申込画面です。お手本カード（山田さん・佐藤さん）の情報どおりに正確にミスなく登録してください。'}
         </p>
       </div>
@@ -382,10 +382,10 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
                     />
                     <div>
                       <div className="text-xs font-black text-[#352C21]">
-                        先生からのアドバイス：住所の番地が小文字（半角）になっています！
+                        先生からのアドバイス：住所の番地が半角になっています！
                       </div>
                       <div className="text-xs text-[#352C21]/80 mt-0.5">
-                        入力された「<span className="font-mono font-bold text-red-600">{formValues.addressBanchi}</span>」を、大文字（全角）の「<span className="font-mono font-bold text-[#5cb312]">{toFullWidth(formValues.addressBanchi)}</span>」に修正しましょう！
+                        入力された「<span className="font-mono font-bold text-red-600">{formValues.addressBanchi}</span>」を、全角の「<span className="font-mono font-bold text-[#5cb312]">{toFullWidth(formValues.addressBanchi)}</span>」に修正しましょう！
                       </div>
                     </div>
                   </div>
@@ -395,7 +395,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
                     onClick={handleAutoFixAddress}
                     className="w-full sm:w-auto shrink-0 px-3 py-1.5 rounded-lg bg-[#91DF42] text-[#352C21] font-bold text-xs border border-[#352C21] hover:bg-[#91DF42]/80 transition-all shadow-xs"
                   >
-                    ワンクリックで大文字（全角）に変換
+                    ワンクリックで全角に変換
                   </button>
                 </div>
               )}
@@ -607,18 +607,18 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
         <div className="p-4 rounded-2xl bg-amber-50/50 border-2 border-[#FFBE34]">
           <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
             <label className={`block font-black text-[#352C21] ${labelFontClass}`}>
-              町名・番地（数字・ハイフンは大文字で入力）
+              町名・番地（数字・ハイフンは全角で入力）
               <span className="text-red-600 ml-1">※必須</span>
             </label>
             <div className="flex items-center gap-1">
               <span className="text-xs font-black px-2 py-0.5 rounded bg-[#FFB5B8] text-[#352C21] border border-[#352C21]/30">
-                ★大文字（全角）必須
+                ★全角必須
               </span>
             </div>
           </div>
 
           <div className="text-xs text-[#352C21]/80 mb-2">
-            ※番地や号の数字・ハイフンは必ず全角（大文字）で入力してください。小文字（半角 1-1）で入力すると警告が出ます。
+            ※番地や号の数字・ハイフンは必ず全角で入力してください。半角（1-1）で入力すると警告が出ます。
           </div>
 
           <input
@@ -660,7 +660,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
             formValues.addressBanchi && !hasHalfWidthAlphaNumOrHyphen(formValues.addressBanchi) && (
               <div className="mt-2 text-xs font-bold text-[#5cb312] flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4" />
-                <span>大文字（全角）で正しく入力されています！</span>
+                <span>全角で正しく入力されています！</span>
               </div>
             )
           )}
@@ -670,7 +670,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
             <div className="flex items-center justify-between mb-1">
               <span className="font-bold flex items-center gap-1">
                 <Lightbulb className="w-3.5 h-3.5 text-[#FFBE34]" />
-                大文字（全角）の打ち方ヒント：
+                全角の打ち方ヒント：
               </span>
               <div className="flex items-center gap-1 text-[11px]">
                 <button
@@ -714,7 +714,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
               <span className="text-gray-500 text-xs ml-1 font-normal">（任意）</span>
             </label>
             <span className="text-[11px] font-bold text-[#FFBE34] bg-[#FFBE34]/20 px-1.5 py-0.2 rounded">
-              ※数字は大文字（全角）
+              ※数字は全角
             </span>
           </div>
           <input
@@ -773,7 +773,7 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
                 <span className="text-red-600 ml-1">※必須</span>
               </label>
               <span className="text-[11px] font-bold text-[#9D4895] bg-[#9D4895]/10 px-1.5 py-0.2 rounded">
-                半角英数小文字
+                半角英数字
               </span>
             </div>
             <input

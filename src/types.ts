@@ -41,7 +41,7 @@ export interface FormValues {
   postalCode: string;
   prefecture: string;
   city: string;
-  addressBanchi: string; // The crucial "大文字（全角）" target
+  addressBanchi: string; // The crucial "全角" target
   building: string;
   phone: string;
   email: string;

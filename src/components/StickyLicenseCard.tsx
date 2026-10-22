@@ -177,7 +177,7 @@ export const StickyLicenseCard: React.FC<StickyLicenseCardProps> = ({
                           ★重要ルール
                         </span>
                         <span className="text-[#352C21] font-medium">
-                          番地「<span className="font-black text-red-600">{currentProfile.addressBanchiZen}</span>」は大文字（全角）で入力！
+                          番地「<span className="font-black text-red-600">{currentProfile.addressBanchiZen}</span>」は全角で入力！
                         </span>
                       </div>
                     </div>
@@ -231,9 +231,9 @@ export const StickyLicenseCard: React.FC<StickyLicenseCardProps> = ({
                   <button
                     onClick={() => onFillExample(currentProfile, true)}
                     className="w-full py-1 px-1.5 text-[10px] font-bold rounded bg-[#FFB5B8] text-[#352C21] hover:bg-[#FFB5B8]/80 transition-colors text-center shadow-2xs active:scale-95"
-                    title="わざと小文字（半角 1-1）で入力してエラー体験してみます"
+                    title="わざと半角（1-1）で入力してエラー体験してみます"
                   >
-                    <span>⚠ わざと小文字で試す</span>
+                    <span>⚠ わざと半角で試す</span>
                   </button>
                 </div>
               </div>

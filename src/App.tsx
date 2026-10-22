@@ -168,8 +168,6 @@ export default function App() {
       {/* Top Navbar */}
       <Navbar
         currentView={currentView}
-        fontSize={fontSize}
-        setFontSize={setFontSize}
         onNavigateToDialogue={() => {
           setCurrentView('dialogue');
           window.scrollTo({ top: 0, behavior: 'smooth' });

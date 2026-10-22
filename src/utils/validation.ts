@@ -25,23 +25,19 @@ export function isPureFullWidthKatakana(str: string): boolean {
   return /^[\u30A0-\u30FF\u30FC\s　]+$/.test(str);
 }
 
-// Convert half-width ASCII numbers/hyphens to full-width
+// Convert half-width ASCII numbers, alphabets, hyphens, and symbols to full-width
 export function toFullWidth(str: string): string {
   return str
-    .replace(/[0-9]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0))
-    .replace(/-/g, '－')
-    .replace(/a-z/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0))
-    .replace(/A-Z/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
+    .replace(/[!-~]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0))
+    .replace(/ /g, '　');
 }
 
-// Convert full-width numbers/hyphens to half-width
+// Convert full-width numbers, alphabets, and symbols to half-width
 export function toHalfWidth(str: string): string {
   return str
-    .replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0))
-    .replace(/－/g, '-')
-    .replace(/ー/g, '-')
-    .replace(/[ａ-ｚ]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0))
-    .replace(/[Ａ-Ｚ]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0));
+    .replace(/[\uff01-\uff5e]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0))
+    .replace(/　/g, ' ')
+    .replace(/[ー―–]/g, '-');
 }
 
 // Convert Hiragana to Katakana
@@ -118,7 +114,7 @@ export function validateForm(values: FormValues): FormErrors {
     errors.postalCode = {
       hasError: true,
       message: '※郵便番号は半角数字で入力してください',
-      tip: '全角数字（大文字）になっています。半角数字（小文字）で打ち直してください。',
+      tip: '全角数字になっています。半角数字で打ち直してください。',
       causeType: 'zen_instead_of_han',
     };
   } else if (cleanPostal.includes('-') || cleanPostal.includes('－')) {
@@ -161,15 +157,15 @@ export function validateForm(values: FormValues): FormErrors {
     errors.addressBanchi = {
       hasError: true,
       message: '※住所（番地）を入力してください',
-      tip: '番地・号を入力してください。※数字やハイフンは大文字（全角）です。',
+      tip: '番地・号を入力してください。※数字やハイフンは全角です。',
       causeType: 'empty',
     };
   } else if (hasHalfWidthAlphaNumOrHyphen(cleanBanchi)) {
     // Crucial warning specified by user
     errors.addressBanchi = {
       hasError: true,
-      message: '※住所は大文字で入力してください',
-      tip: '番地の数字やハイフンが小文字（半角）になっています。「1-1」ではなく全角の「１－１」でご入力ください。キーボードのF9キーまたは全角変換をお使いください。',
+      message: '※住所は全角で入力してください',
+      tip: '番地の数字やハイフンが半角になっています。「1-1」ではなく全角の「１－１」でご入力ください。キーボードのF9キーまたは全角変換をお使いください。',
       causeType: 'han_instead_of_zen',
     };
   }
@@ -178,7 +174,7 @@ export function validateForm(values: FormValues): FormErrors {
   if (values.building.trim() && hasHalfWidthAlphaNumOrHyphen(values.building)) {
     errors.building = {
       hasError: true,
-      message: '※建物名・部屋番号の数字は大文字（全角）で入力してください',
+      message: '※建物名・部屋番号の数字は全角で入力してください',
       tip: '部屋番号の「201」が半角になっています。全角の「２０１号室」に直してください。',
       causeType: 'han_instead_of_zen',
     };
@@ -197,7 +193,7 @@ export function validateForm(values: FormValues): FormErrors {
     errors.phone = {
       hasError: true,
       message: '※電話番号は半角数字で入力してください',
-      tip: '大文字（全角）の数字になっています。半角数字に打ち直してください。',
+      tip: '全角の数字になっています。半角数字に打ち直してください。',
       causeType: 'zen_instead_of_han',
     };
   } else if (cleanPhone.includes('-') || cleanPhone.includes('－')) {
@@ -222,14 +218,14 @@ export function validateForm(values: FormValues): FormErrors {
     errors.email = {
       hasError: true,
       message: '※メールアドレスを入力してください',
-      tip: '連絡用メールアドレスを半角英数小文字で入力してください。',
+      tip: '連絡用メールアドレスを半角英数で入力してください。',
       causeType: 'empty',
     };
   } else if (hasFullWidthAlpha(cleanEmail) || hasFullWidthDigits(cleanEmail) || cleanEmail.includes('＠') || cleanEmail.includes('．')) {
     errors.email = {
       hasError: true,
-      message: '※メールアドレスは小文字（半角英数）で入力してください',
-      tip: 'アドレスの中に大文字（全角）が含まれています。すべて半角英数字で入力してください。',
+      message: '※メールアドレスは半角英数で入力してください',
+      tip: 'アドレスの中に全角が含まれています。すべて半角英数字で入力してください。',
       causeType: 'zen_instead_of_han',
     };
   } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(cleanEmail)) {

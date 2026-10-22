@@ -32,19 +32,25 @@ export const CharTypeReferenceModal: React.FC<CharTypeReferenceModalProps> = ({
       let isFull = false;
 
       if (/[0-9]/.test(char)) {
-        type = '半角数字（小文字）';
+        type = '半角数字';
         isFull = false;
       } else if (/[０-９]/.test(char)) {
-        type = '全角数字（大文字）⭕';
+        type = '全角数字⭕';
         isFull = true;
       } else if (char === '-') {
-        type = '半角ハイフン（小文字）';
+        type = '半角ハイフン';
         isFull = false;
       } else if (char === '－') {
-        type = '全角ハイフン（大文字）⭕';
+        type = '全角ハイフン⭕';
         isFull = true;
       } else if (char === 'ー') {
-        type = '全角長音記号（カタカナの伸ばし棒）';
+        type = '全角長音記号（伸ばし棒）⭕';
+        isFull = true;
+      } else if (char === ' ') {
+        type = '半角スペース';
+        isFull = false;
+      } else if (char === '　') {
+        type = '全角スペース';
         isFull = true;
       } else if (/[a-zA-Z]/.test(char)) {
         type = '半角アルファベット';
@@ -84,7 +90,7 @@ export const CharTypeReferenceModal: React.FC<CharTypeReferenceModalProps> = ({
           <div className="flex items-center gap-2">
             <HelpCircle className="w-5 h-5 text-[#352C21]" />
             <h3 className="text-base sm:text-lg font-black text-[#352C21]">
-              「大文字（全角）」と「小文字（半角）」の違い早見表
+              「全角」と「半角」の違い早見表
             </h3>
           </div>
           <button
@@ -101,8 +107,8 @@ export const CharTypeReferenceModal: React.FC<CharTypeReferenceModalProps> = ({
           {/* Quick Explanation */}
           <div className="p-3 rounded-xl bg-amber-50 border border-[#FFBE34]">
             <p className="font-bold text-[#352C21] leading-relaxed">
-              行政や資格試験の「<strong>大文字で入力してください</strong>」とは、<strong>「全角（ぜんかく）」</strong>文字のことです！
-              マス目いっぱいの正方形の文字が「全角（大文字）」で、半分の細い文字が「半角（小文字）」です。
+              PC・スマホでの自分の情報を入力する（特に行政への申請や資格試験での情報入力など）場合は<strong>「全角（ぜんかく）」</strong>と<strong>「半角（はんかく）」</strong>が厳密に区別されます！
+              マス目いっぱいの正方形の文字が「全角」で、半分の細い文字が「半角」です。
             </p>
           </div>
 
@@ -118,10 +124,10 @@ export const CharTypeReferenceModal: React.FC<CharTypeReferenceModalProps> = ({
                   <tr>
                     <th className="p-2 sm:p-2.5 border-r border-[#352C21]/20">項目</th>
                     <th className="p-2 sm:p-2.5 border-r border-[#352C21]/20 text-red-700 bg-red-50">
-                      小文字（半角）※住所でエラー
+                      半角
                     </th>
                     <th className="p-2 sm:p-2.5 text-[#5cb312] bg-green-50">
-                      大文字（全角）※行政の住所で正解
+                      全角
                     </th>
                   </tr>
                 </thead>
@@ -138,10 +144,10 @@ export const CharTypeReferenceModal: React.FC<CharTypeReferenceModalProps> = ({
                   <tr>
                     <td className="p-2 sm:p-2.5 font-bold border-r border-[#352C21]/20">ハイフン</td>
                     <td className="p-2 sm:p-2.5 font-mono text-red-600 bg-red-50/30 border-r border-[#352C21]/20">
-                      - （半角マイナス）
+                      -
                     </td>
                     <td className="p-2 sm:p-2.5 font-mono font-black text-[#352C21] bg-green-50/30">
-                      － （全角ハイフン）
+                      －
                     </td>
                   </tr>
                   <tr>
@@ -179,18 +185,18 @@ export const CharTypeReferenceModal: React.FC<CharTypeReferenceModalProps> = ({
               下の枠に適当に数字や文字を打ってみてください。全角か半角かを1文字ずつ判定します！
             </p>
 
-            <div className="flex gap-2 mb-2">
+            <div className="flex flex-col sm:flex-row gap-2 mb-2">
               <input
                 type="text"
                 value={testInput}
                 onChange={(e) => setTestInput(e.target.value)}
-                placeholder="ここに文字を入力してみてください（例：1-1 や １－１）"
-                className="flex-1 px-3 py-2 rounded-xl border-2 border-[#352C21] bg-white font-medium outline-none text-sm"
+                placeholder="ここに文字を入力（例：1-1 や １－１）"
+                className="w-full flex-1 min-w-0 px-3 py-2 rounded-xl border-2 border-[#352C21] bg-white font-medium outline-none text-sm"
               />
               <button
                 type="button"
                 onClick={() => setTestInput(toFullWidth(testInput))}
-                className="px-3 py-2 rounded-xl bg-[#91DF42] text-[#352C21] font-bold text-xs border border-[#352C21] hover:bg-[#91DF42]/80 shrink-0"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[#91DF42] text-[#352C21] font-bold text-xs border border-[#352C21] hover:bg-[#91DF42]/80 shrink-0 text-center"
               >
                 全角にする
               </button>

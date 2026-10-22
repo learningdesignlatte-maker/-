@@ -100,7 +100,7 @@ export const PatternSelection: React.FC<PatternSelectionProps> = ({
                 <span>実際のシチュエーション：</span>
               </div>
               <p className="text-[#352C21]/80 leading-relaxed">
-                入力中は何も言われないため安心していると、「次へ」を押した瞬間に画面の上に『※住所は大文字で入力してください』と赤文字が出て、枠が赤くなります。
+                入力中は何も言われないため安心していると、「次へ」を押した瞬間に画面の上に『※住所は全角で入力してください』と赤文字が出て、枠が赤くなります。
               </p>
             </div>
 
@@ -108,7 +108,7 @@ export const PatternSelection: React.FC<PatternSelectionProps> = ({
               <span className="font-bold text-[#352C21]">身につくスキル：</span>
               <ul className="list-disc list-inside mt-1 space-y-0.5 text-[11px] text-[#352C21]/80">
                 <li>画面上部に飛んだ警告文を落ち着いて読む</li>
-                <li>赤枠になった「番地の小文字」を見つけて直す</li>
+                <li>赤枠になった「番地の半角」を見つけて直す</li>
               </ul>
             </div>
           </div>
@@ -190,7 +190,7 @@ export const PatternSelection: React.FC<PatternSelectionProps> = ({
                 <span>実際のシチュエーション：</span>
               </div>
               <p className="text-[#352C21]/80 leading-relaxed">
-                小文字で住所を打って次の項目に移った瞬間、マスが薄いピンクに変わり「※大文字で入力してください」と警告が出ます。その場で直せば青や緑に戻ります。
+                半角で住所を打って次の項目に移った瞬間、マスが薄いピンクに変わり「※全角で入力してください」と警告が出ます。その場で直せば青や緑に戻ります。
               </p>
             </div>
 
