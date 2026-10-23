@@ -214,48 +214,15 @@ export const DialogueIntro: React.FC<DialogueIntroProps> = ({
         </div>
       </div>
 
-      {/* Direct Shortcuts to Patterns below */}
-      <div className="mt-8 pt-6 border-t border-[#352C21]/20">
-        <h3 className="text-sm font-black text-[#352C21] text-center mb-3">
-          解説を読まずに今すぐ練習にトライする方はこちら：
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <button
-            onClick={() => onSelectPatternDirectly('pattern1')}
-            className="p-3 text-left rounded-xl border-2 border-[#352C21] bg-white hover:bg-[#FFB5B8]/20 transition-all shadow-xs group"
-          >
-            <div className="font-black text-sm text-[#352C21] group-hover:text-red-700">
-              パターン①に挑戦
-            </div>
-            <div className="text-xs text-[#352C21]/70 mt-0.5">
-              「次へ」を押した後に一括で赤い警告文が出るタイプ
-            </div>
-          </button>
-
-          <button
-            onClick={() => onSelectPatternDirectly('pattern2')}
-            className="p-3 text-left rounded-xl border-2 border-[#352C21] bg-white hover:bg-[#FFBE34]/20 transition-all shadow-xs group"
-          >
-            <div className="font-black text-sm text-[#352C21] group-hover:text-amber-700">
-              パターン②に挑戦
-            </div>
-            <div className="text-xs text-[#352C21]/70 mt-0.5">
-              最初からうっすら入力例が入っているタイプ
-            </div>
-          </button>
-
-          <button
-            onClick={() => onSelectPatternDirectly('pattern3')}
-            className="p-3 text-left rounded-xl border-2 border-[#352C21] bg-white hover:bg-[#91DF42]/20 transition-all shadow-xs group"
-          >
-            <div className="font-black text-sm text-[#352C21] group-hover:text-green-700">
-              パターン③に挑戦
-            </div>
-            <div className="text-xs text-[#352C21]/70 mt-0.5">
-              枠を離れた瞬間にピンク色に変わる即時判定タイプ
-            </div>
-          </button>
-        </div>
+      {/* Direct Shortcut to Practice below */}
+      <div className="mt-8 pt-6 border-t border-[#352C21]/20 text-center">
+        <button
+          onClick={onStartPractice}
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-[#352C21] bg-[#FFBE34] hover:bg-[#FFBE34]/80 text-[#352C21] font-black text-sm sm:text-base shadow-xs active:scale-98 transition-all cursor-pointer"
+        >
+          <span>解説は読まず、まずは練習にトライしたい方はこちら！</span>
+          <ArrowRight className="w-4 h-4 text-[#352C21]" />
+        </button>
       </div>
     </div>
   );

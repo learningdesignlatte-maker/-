@@ -537,22 +537,16 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
           </div>
         </div>
 
-        {/* 5. Address Banchi (CRITICAL COMPONENT TARGET) */}
-        <div className="p-4 rounded-2xl bg-amber-50/50 border-2 border-[#FFBE34]">
-          <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
+        {/* 5. Address Banchi */}
+        <div>
+          <div className="flex items-center justify-between mb-1">
             <label className={`block font-black text-[#352C21] ${labelFontClass}`}>
-              町名・番地（数字・ハイフンは全角で入力）
+              町名・番地
               <span className="text-red-600 ml-1">※必須</span>
             </label>
-            <div className="flex items-center gap-1">
-              <span className="text-xs font-black px-2 py-0.5 rounded bg-[#FFB5B8] text-[#352C21] border border-[#352C21]/30">
-                ★全角必須
-              </span>
-            </div>
-          </div>
-
-          <div className="text-xs text-[#352C21]/80 mb-2">
-            ※番地や号の数字・ハイフンは必ず全角で入力してください。半角（1-1）で入力すると警告が出ます。
+            <span className="text-[11px] font-bold text-[#9D4895] bg-[#9D4895]/10 px-1.5 py-0.2 rounded">
+              全角
+            </span>
           </div>
 
           <input
@@ -560,8 +554,8 @@ export const PracticeForm: React.FC<PracticeFormProps> = ({
             value={formValues.addressBanchi}
             onChange={(e) => handleChange('addressBanchi', e.target.value)}
             onBlur={() => handleBlur('addressBanchi')}
-            placeholder={isPattern2 ? `例：${currentProfile.addressBanchiZen}` : '例：千代田１－１（全角）'}
-            className={`w-full px-3.5 py-3 rounded-xl transition-all outline-none font-bold text-base ${getInputStyle('addressBanchi')}`}
+            placeholder={isPattern2 ? `例：${currentProfile.addressBanchiZen}` : '例：千代田１－１'}
+            className={`w-full px-3 py-2.5 rounded-xl transition-all outline-none font-medium ${getInputStyle('addressBanchi')}`}
           />
 
           {/* Specific Warning for Address Banchi */}
